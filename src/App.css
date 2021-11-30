@@ -1,7 +1,3 @@
-.App {
-  text-align: center;
-}
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -35,4 +31,224 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: relative;
+  width: 30px;
+  height: 20px;
+  margin-left: 8px;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: #bdc3c7;
+}
+
+/* Color/shape of burger icon bars on hover*/
+.bm-burger-bars-hover {
+  background: #DA7635;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #bdc3c7;
+}
+
+/*
+Sidebar wrapper styles
+Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+*/
+.bm-menu-wrap {
+  position: fixed;
+  height: 100%;
+  top: 0px;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: #373a47;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+  top: 0px;
+}
+
+.bm-menu a {
+  color: #bdc3c7;
+}
+
+.bm-menu a:hover {
+  color: #DA7635;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: #b8b7ad;
+  padding: 0.8em;
+  font-size: 20px;
+}
+
+.bm-item-list a {
+  padding: 0.8em;
+  text-decoration: none;
+}
+
+.bm-item-list a span {
+  margin-left: 10px;
+  font-weight: 700;
+}
+
+.bm-item-list a :is(span, i) {
+  font-size: 15px;
+}
+
+/* Individual item */
+.bm-item {
+  display: inline-block;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+  top: 0px;
+}
+
+.brand-text {
+  font-size: 15px;
+  font-weight: bold;
+  color: #bdc3c7
+}
+
+.custom-node-hypothesis {
+    background-color: #9893DA;
+    border: 1px solid white;
+    color: #FFF;
+    padding: 10px;
+    height: 133px;
+    width: 150px;
+}
+
+.custom-node-evidence {
+    background-color: #db5461;
+    border: 1px solid white;
+    color: #FFF;
+    padding: 10px;
+    height: 160px;
+    width: 150px;
+}
+
+.custom-node-fact {
+    background-color: rgb(138, 162, 158);
+    border: 1px solid white;
+    color: #FFF;
+    padding: 10px;
+    height: 178px;
+    width: 150px;
+}
+
+.custom-node-title {
+    color: white;
+    font-weight: bold;
+    font-size: small;
+    overflow-y: hidden;
+    height: 40px;
+    text-align: center;
+}
+
+.custom-node-property-1-label {
+    color: #3d5467;
+    text-align: center;
+    font-weight: bold;
+    font-size: smaller;
+}
+
+.custom-node-property-1-value {
+    background-color: #3d5467;
+    text-align: center;
+    color: white;
+    font-size: smaller;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.custom-node-property-2-label {
+    color: #d7b377;
+    text-align: center;
+    font-weight: bold;
+    font-size: smaller;
+}
+
+.custom-node-property-2-value {
+    background-color: #d7b377;
+    text-align: center;
+    color: white;
+    font-size: smaller;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.favorable-handle {
+    background-color: rgb(248, 241, 255);
+    color: rgb(40, 40, 40);
+    font-weight: lighter;
+    font-size: smaller;
+    text-align: center;
+}
+
+.unfavorable-handle {
+    background-color: rgb(83, 77, 86);
+    color: white;
+    font-weight: lighter;
+    font-size: smaller;
+    text-align: center;
+}
+
+.canvas-container {
+    height: calc(100% - 51px);
+}
+
+.process-tab {
+    display: inline-block;
+    position: relative;
+    list-style: none;
+    padding: 6px 12px 0;
+    cursor: pointer;
+    border-radius: 5px 5px 0 0;
+    margin-right: 2px;
+    color: #979391;
+    background: #bdc3c7;
+}
+
+.process-tab:hover {
+    color: black;
+}
+
+.process-tab--selected {
+    box-shadow: 2px -1px 2px 0 rgba(0,0,0,0.5);
+    z-index: 3;
+    color: black;
+    background-color: #DA7635;
+}
+
+.process-tab-panel {
+    z-index: 2;
+    position: relative;
+    padding: 0px 10px;
+    display: none;
+}
+
+.process-tab-panel--selected {
+    display: block;
 }
