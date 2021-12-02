@@ -1,13 +1,14 @@
 import './App.css';
 import 'react-tabs/style/react-tabs.css';
 import {Component} from "react";
-import {Container, Navbar} from "react-bootstrap";
+import {Col, Container, Navbar, Row, Stack} from "react-bootstrap";
 import {slide as Menu} from 'react-burger-menu'
 import {Tab, TabList, TabPanel, Tabs} from 'react-tabs'
 import ReactFlow, {addEdge, MiniMap, removeElements} from "react-flow-renderer";
 import EvidenceNode from "./EvidenceNode";
 import FactNode from "./FactNode";
 import HypothesisNode from "./HypothesisNode";
+import SplitPane from "react-split-pane";
 
 
 class App extends Component {
@@ -128,42 +129,62 @@ class App extends Component {
                         </Navbar.Brand>
                     </Container>
                 </Navbar>
-                <div className="container-fluid m-0 p-0 canvas-container">
-                    <Tabs
-                        selectedTabClassName="process-tab--selected"
-                        selectedTabPanelClassName="process-tab-panel--selected"
-                        className="container-fluid m-0 p-0 h-100">
-                        <TabList>
-                            <Tab className="process-tab">Proceso 1</Tab>
-                            <Tab className="process-tab">Proceso 2</Tab>
-                            <Tab className="process-tab">Proceso 3</Tab>
-                        </TabList>
-                        <TabPanel className="process-tab-panel m-0 p-0 canvas-container">
-                            <ReactFlow
-                                elements={this.state.elements}
-                                onElementsRemove={this.onElementsRemove}
-                                onConnect={this.onConnect}
-                                deleteKeyCode={46}
-                                nodeTypes={nodeTypes}
-                                minZoom={0.2}
-                            >
-                                <MiniMap
-                                    nodeColor={(n) => {
-                                        if (n.type === 'evidence') return '#db5461';
-                                        if (n.type === 'fact') return '#8AA29E';
-                                        if (n.type === 'hypothesis') return '#9893DA';
-                                    }}
-                                />
-                            </ReactFlow>
-                        </TabPanel>
-                        <TabPanel className="process-tab-panel" style={{color: 'white'}}>
-                            Otro proceso
-                        </TabPanel>
-                        <TabPanel className="process-tab-panel" style={{color: 'white'}}>
-                            Otro proceso más
-                        </TabPanel>
-                    </Tabs>
-                </div>
+                <Container fluid className="m-0 p-0 canvas-container">
+                    <Row className="m-0 p-0" style={{height: 'calc(100%)'}}>
+                        <Col xs={12} md={9} className="m-0 p-0" style={{height: 'calc(100%)'}}>
+                            <Tabs
+                                selectedTabClassName="process-tab--selected"
+                                selectedTabPanelClassName="process-tab-panel--selected"
+                                className="container-fluid m-0 p-0 h-100">
+                                <TabList className="process-tab-list">
+                                    <Tab className="process-tab">Proceso 1</Tab>
+                                    <Tab className="process-tab">Proceso 2</Tab>
+                                    <Tab className="process-tab">Proceso 3</Tab>
+                                </TabList>
+                                <TabPanel className="process-tab-panel m-0 p-0 canvas-container">
+                                    <ReactFlow
+                                        elements={this.state.elements}
+                                        onElementsRemove={this.onElementsRemove}
+                                        onConnect={this.onConnect}
+                                        deleteKeyCode={46}
+                                        nodeTypes={nodeTypes}
+                                        minZoom={0.2}
+                                    >
+                                        <MiniMap
+                                            nodeColor={(n) => {
+                                                if (n.type === 'evidence') return '#db5461';
+                                                if (n.type === 'fact') return '#8AA29E';
+                                                if (n.type === 'hypothesis') return '#9893DA';
+                                            }}
+                                        />
+                                    </ReactFlow>
+                                </TabPanel>
+                                <TabPanel className="process-tab-panel" style={{color: 'white'}}>
+                                    Otro proceso
+                                </TabPanel>
+                                <TabPanel className="process-tab-panel" style={{color: 'white'}}>
+                                    Otro proceso más
+                                </TabPanel>
+                            </Tabs>
+                        </Col>
+                        <Col xs={5} md={3} className="m-0 p-0 shadow-lg properties-col" style={{height: 'calc(100%)'}}>
+                            <SplitPane defaultSize={'50%'} maxSize={-50} split="horizontal" className="split-pane">
+                                <div className="panel mb-1">
+                                    <Stack className="h-100 mb-3" direction="vertical" gap={0}>
+                                        <div className="view-title ps-1">Vista de propiedades</div>
+                                        <div className="view-content h-100 p-1">Contenido</div>
+                                    </Stack>
+                                </div>
+                                <div className="panel h-100 mt-1">
+                                    <Stack className="h-100" direction="vertical" gap={0}>
+                                        <div className="view-title ps-1">Lista de chequeo</div>
+                                        <div className="view-content h-100 p-1">Contenido</div>
+                                    </Stack>
+                                </div>
+                            </SplitPane>
+                        </Col>
+                    </Row>
+                </Container>
             </div>
         );
     }
