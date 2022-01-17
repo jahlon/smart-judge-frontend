@@ -1,6 +1,6 @@
 import './App.css';
 import 'react-tabs/style/react-tabs.css';
-import {Component} from "react";
+import React, {Component} from "react";
 import {Col, Container, Navbar, Row, Stack} from "react-bootstrap";
 import {slide as Menu} from 'react-burger-menu'
 import {Tab, TabList, TabPanel, Tabs} from 'react-tabs'
@@ -9,14 +9,14 @@ import EvidenceNode from "./EvidenceNode";
 import FactNode from "./FactNode";
 import HypothesisNode from "./HypothesisNode";
 import SplitPane from "react-split-pane";
-
+import queryString from 'query-string';
 
 class App extends Component {
 
     constructor(props) {
         super(props)
 
-         const initialElements = [
+        const initialElements = [
             {
                 id: '1',
                 type: 'fact',
@@ -69,6 +69,10 @@ class App extends Component {
         this.onConnect = this.onConnect.bind(this)
     }
 
+    componentDidMount() {
+        console.log(queryString.parse(window.location.search))
+    }
+
     onElementsRemove = (elementsToRemove) => {
         this.setState({elements: removeElements(elementsToRemove, this.state.elements)})
     }
@@ -82,11 +86,13 @@ class App extends Component {
     }
 
     render() {
+
         const nodeTypes = {
             evidence: EvidenceNode,
             fact: FactNode,
             hypothesis: HypothesisNode,
         };
+
         return (
             <div className="App vh-100 bg-dark">
                 <Navbar className="justify-content-start shadow" bg="dark" variant="dark">
@@ -189,6 +195,5 @@ class App extends Component {
         );
     }
 }
-
 
 export default App;
