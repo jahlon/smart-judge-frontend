@@ -10,11 +10,23 @@ import FactNode from "./FactNode";
 import HypothesisNode from "./HypothesisNode";
 import SplitPane from "react-split-pane";
 import queryString from 'query-string';
-
+import client from "./Client";
 class App extends Component {
 
     constructor(props) {
         super(props)
+
+
+        const queryParams = new URLSearchParams(window.location.search)
+        const authCode = queryParams.get('code')
+        console.log(authCode)
+        
+        if(authCode) {
+            client.loginUser(authCode)
+                .then( (response) => {
+                    console.log(response)
+                })
+        }
 
         const initialElements = [
             {
@@ -67,10 +79,8 @@ class App extends Component {
 
         this.onElementsRemove = this.onElementsRemove.bind(this)
         this.onConnect = this.onConnect.bind(this)
-    }
 
-    componentDidMount() {
-        console.log(queryString.parse(window.location.search))
+        
     }
 
     onElementsRemove = (elementsToRemove) => {
